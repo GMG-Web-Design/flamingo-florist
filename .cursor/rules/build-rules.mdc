@@ -1,0 +1,1425 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Baseline Build Rules — Next 15 + Tailwind 3
+Two-Phase Development with Optional React Bits
+Fast dev-server, strict TypeScript, and a repeatable design-system scaffold. Phase 1 creates a solid foundation; Phase 2 optionally adds React Bits interactive polish. Token + primitive layer borrows Avada's Container / Column logic so every project stays consistent yet theme-able.
+
+
+
+
+
+
+
+
+0 · Locked stack
+Layer
+Version / Notes
+Node
+22 LTS "Jod" · pnpm ^9
+Next.js
+15.3.x (App Router, Turbopack)
+React
+18.2 · strict TS + SWC
+Tailwind
+3.4.x (+ PostCSS 8, Autoprefixer 10) — avoid 4.x until import-order issues settle
+UI / Animation
+React Bits ^1.5 · framer-motion ^10 · optional three ^0.16x
+Testing
+Jest 30 / @testing-library/react 15 (unit) · Playwright 1.43 (E2E)
+
+
+
+
+
+
+
+
+0.1 · Template Initialization ★ PRE-BUILT SETUP (2-3 MINUTES)
+This template is a COMPLETE Next.js project. NO create-next-app needed!
+
+**✅ PRE-CONFIGURED:**
+- Complete Next.js 15 + App Router structure
+- TypeScript, Tailwind CSS, ESLint, Prettier (ALL DEPENDENCIES INCLUDED)
+- Path aliases (@/*) already configured  
+- Layout primitives (Section, Container, Row, Col)
+- Design system tokens and safelist configuration
+- Image optimization with external domain support
+- All devDependencies pre-installed in package.json
+
+**Phase 1: Foundation Setup (Required - 2-3 minutes)**
+```bash
+# 1. Clone template and install dependencies
+git clone [repo-url] my-project
+cd my-project
+pnpm install  # This installs ALL dependencies automatically from package.json
+# ⚠️ DO NOT manually add any dependencies - everything is pre-configured
+
+# 2. Customize project (AUTOMATED)
+./setup.sh
+# OR manually update:
+# - package.json: name, description  
+# - app/layout.tsx: metadata (title, description)
+# - design/system/tokens.ts: brand colors
+
+# 3. Verify everything works
+pnpm build  # Should build successfully immediately
+pnpm dev    # Start development server
+```
+
+**✅ CRITICAL: Everything is PRE-BUILT**
+- ❌ DO NOT run create-next-app (causes conflicts)
+- ❌ DO NOT try to initialize Next.js (already done)
+- ❌ DO NOT manually install dependencies (all in package.json)
+- ❌ DO NOT run pnpm add -D typescript/@types (already installed)
+- ❌ DO NOT run pnpm add tailwindcss/postcss (already configured)
+- ✅ Project is ready to use immediately after clone + install
+- ✅ All dependencies installed automatically with `pnpm install`
+
+**🎉 Phase 1 Complete!** You have a working website ready for deployment in 2-3 minutes.
+
+
+
+
+
+
+
+
+**★ MANDATORY: Final Build Verification**
+**CRITICAL:** At the end of ANY development work, you MUST verify the project builds successfully:
+
+```bash
+# REQUIRED: Final build verification
+pnpm build
+
+# ✅ MUST see: "✓ Compiled successfully"
+# ❌ NEVER proceed if build fails
+# ❌ Build errors = task incomplete
+```
+
+**Build Success Requirements:**
+- ✅ Zero TypeScript errors
+- ✅ Zero ESLint errors  
+- ✅ All imports resolve correctly
+- ✅ All custom classes generate properly
+- ✅ "Compiled successfully" message appears
+
+**If Build Fails:**
+- 🚫 **STOP** - Do not mark task as complete
+- 🔍 **DEBUG** - Fix all errors before proceeding
+- 📝 **DOCUMENT** - Add any fixes to issues.md
+- ✅ **RETRY** - Run `pnpm build` until successful
+
+**No exceptions:** Build failure means the project is broken and cannot be deployed.
+
+
+
+
+
+
+
+
+**Phase 2: Interactive Enhancement (Optional)**
+```bash
+# 7. Setup React Bits components (AUTOMATED)
+pnpm run setup-components
+
+
+
+
+
+
+
+
+# 8. Add specific animations
+jsrepo add animations/SplashCursor
+jsrepo add textanimations/ShinyText
+
+
+
+
+
+
+
+
+# 9. Test enhanced experience
+pnpm dev  # Verify animations work correctly
+```
+
+
+
+
+
+
+
+
+**Design system is ready** - tokens, primitives, and utilities work in both phases.
+**Template content** can be customized in app/page.tsx and layout primitives.
+
+
+
+
+
+
+
+
+**Global Requirements** (one-time per developer):
+- Node 22 LTS + pnpm installed
+- jsrepo CLI installed globally (auto-installed by setup-components script if needed for Phase 2)
+
+
+
+
+
+
+
+
+**No authentication required** - All React Bits components are accessed via the public registry.
+
+
+
+
+
+
+
+
+1 · Folder layout
+/app/components            # 1 component ➜ 1 file
+/app/layout-primitives     # Section, Container, Row, Col
+/app/hooks                 # use*
+/app/animations            # Lottie, R3F helpers, Lenis
+/app/api                   # Zod-validated routes
+/design/system             # tokens.ts, brand-guide.md (per project)
+tests                      # *.test.ts[x] beside src
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2 · Design-system layer (Avada-style)
+2.1 Tokens ★ CRITICAL COLOR CLASS VALIDATION
+design/system/tokens.ts holds colours, spacing, typography, radii.
+Hook it into Tailwind:
+// tailwind.config.ts
+import * as tokens from './design/system/tokens';
+
+
+
+
+
+
+
+
+export default {
+  theme: { extend: tokens },
+  safelist: [
+    // ADD ALL CUSTOM TOKEN CLASSES HERE
+    'max-w-container',  // Custom container width from tokens
+    // Add other custom classes that might not be detected by content scanning
+  ],
+};
+
+
+
+
+
+
+
+
+**⚠️ CRITICAL: Custom Token Safelist Requirements**
+When creating custom design tokens that generate new Tailwind classes, you MUST add them to the safelist in tailwind.config.ts:
+
+
+```typescript
+// tailwind.config.ts
+import * as tokens from './design/system/tokens';
+
+
+export default {
+  theme: { extend: tokens },
+  safelist: [
+    // ADD ALL CUSTOM TOKEN CLASSES HERE
+    'max-w-container',  // Custom container width from tokens
+    // Add other custom classes that might not be detected by content scanning
+  ],
+  // ... rest of config
+};
+```
+
+
+**Why this matters:** Tailwind only generates classes it finds during content scanning. Custom tokens may not be detected if they're used in dynamic ways or in layout primitives.
+
+
+
+
+
+
+
+
+**Critical Color Class Guidelines:**
+- ALL custom color classes MUST use kebab-case: `text-deep-navy` NOT `text-deepNavy`
+- Add ESLint rule to catch camelCase color classes in className attributes
+- Create design token validation script that checks for kebab-case consistency
+- Include color class examples in tokens.ts comments for reference
+- Reference tokens.ts file when in doubt about color naming conventions
+
+
+
+
+
+
+
+
+2.2 Layout primitives ★ ENHANCED IMPLEMENTATION STANDARDS
+Component
+Purpose
+<Section variant="dark|light">
+Adds py-spaceLg + bg-surface*
+<Container full|boxed">
+Flex / grid wrapper; optional equal-height columns
+<Row gap="spaceMd">
+Horizontal rhythm
+<Col span={…}>
+Width control, mirroring Avada Columns
+Primitives live in /app/layout-primitives and hide raw Tailwind classes from page authors.
+
+
+
+
+
+
+
+
+**Layout Primitive Implementation Standards:**
+- Row component MUST use CSS Grid (`grid grid-cols-12`) never flexbox for main layout
+- Col component MUST use `col-span-*` classes, not flex-based widths
+- Container MUST enforce max-width constraints with proper responsive padding
+- Include layout primitive tests in component creation checklist
+- Verify layout works properly on both mobile and desktop during development
+
+
+
+
+
+
+
+
+**Layout Primitive Safelist Requirements ★ CRITICAL**
+Layout primitives that generate dynamic classes MUST have all possible class combinations added to safelist:
+
+
+```typescript
+// tailwind.config.ts safelist for layout primitives
+safelist: [
+  // Grid column spans for Col component (ALL possible combinations)
+  'col-span-1', 'col-span-2', 'col-span-3', 'col-span-4', 'col-span-5', 'col-span-6',
+  'col-span-7', 'col-span-8', 'col-span-9', 'col-span-10', 'col-span-11', 'col-span-12',
+  // Responsive variants
+  'md:col-span-1', 'md:col-span-2', 'md:col-span-3', 'md:col-span-4', 'md:col-span-5', 'md:col-span-6',
+  'md:col-span-7', 'md:col-span-8', 'md:col-span-9', 'md:col-span-10', 'md:col-span-11', 'md:col-span-12',
+  'lg:col-span-1', 'lg:col-span-2', 'lg:col-span-3', 'lg:col-span-4', 'lg:col-span-5', 'lg:col-span-6',
+  'lg:col-span-7', 'lg:col-span-8', 'lg:col-span-9', 'lg:col-span-10', 'lg:col-span-11', 'lg:col-span-12',
+],
+```
+
+
+**Template Safelist Pattern:** For any layout primitive that uses dynamic class generation, add ALL possible class combinations to prevent runtime styling failures.
+
+
+
+
+**Export/Import Standards:**
+- Layout primitives MUST use named exports: `export const Component = ...`
+- Import layout primitives using: `import { Component } from '@/app/layout-primitives'`
+- Use path aliases consistently: `@/` for root-level imports
+- Never mix default/named export patterns within the same module category
+
+
+
+
+
+
+
+
+2.3 Background Layering Strategy
+Use semi-transparent backgrounds (`rgba()`) when layering effects:
+- Hero sections: 60-80% opacity for readability
+- Content sections: 80-90% opacity
+- Critical CTAs: 90-95% opacity
+This allows background animations/effects to show through content.
+
+
+
+
+
+
+
+
+3 · Animation stack
+Need
+Library
+Base component motion
+React Bits (FadeIn, SlideUp …)
+Complex timelines
+framer-motion v10 or GSAP 3 + ScrollTrigger
+3-D / Canvas
+R3F + drei
+Smooth scroll
+Lenis
+Heavy assets
+Lazy-load with next/dynamic + <Suspense>
+
+
+
+
+
+
+
+
+3.1 · Third-Party Component Integration ★ Best Practices
+**Component Library Integration:**
+- Always use full path imports when available: `import Component from './path/Component'`
+- Avoid destructured imports from component libraries if they cause resolution issues
+- Add `"use client"` directive to any component using React hooks in SSR environments
+- Test SSR compatibility for DOM-dependent components before deployment
+
+
+
+
+
+
+
+
+**Canvas & Animation Components:**
+- Initialize dimensions immediately in useEffect, not only on resize
+- Use `typeof window !== 'undefined'` guards for all browser APIs
+- Set meaningful initial state values, avoid 0x0 dimensions
+- Include device pixel ratio support for crisp rendering on high-DPI displays
+- Position background effects with `absolute inset-0` and appropriate z-index
+
+
+
+
+
+
+
+
+**React Bits Installation ★ PHASE 2 ONLY**
+React Bits components are FULLY AUTOMATED via the template setup for Phase 2 enhancement.
+
+
+
+
+
+
+
+
+**AUTOMATED setup (Phase 2 only - run once per project):**
+```bash
+# This script handles EVERYTHING automatically:
+pnpm run setup-components
+
+
+
+
+
+
+
+
+# What it does:
+# ✅ Verifies jsrepo.json configuration exists
+# ✅ Creates component directory structure
+# ✅ Installs jsrepo CLI globally if needed
+# ✅ Provides usage instructions
+```
+
+
+
+
+
+
+
+
+**Adding components (after setup):**
+```bash
+jsrepo add                           # Browse all available components
+jsrepo add animations/SplashCursor   # Interactive cursor effect
+jsrepo add textanimations/FallingText # Text reveal animations
+jsrepo add components/AnimatedList   # List animations
+jsrepo add backgrounds/ParticleBackground # Background effects
+```
+
+
+
+
+
+
+
+
+**Component Directory Structure (auto-created):**
+- `app/components/reactbits/animations/` - Interactive animations
+- `app/components/reactbits/backgrounds/` - Background effects  
+- `app/components/reactbits/components/` - UI components
+- `app/components/reactbits/textanimations/` - Text effects
+
+
+
+
+
+
+
+
+Components install as TypeScript + Tailwind ready files in organized folders.
+Use `jsrepo add` (no args) to browse available components interactively.
+
+
+
+
+
+
+
+
+**Available React Bits Components:**
+```bash
+# Animations (Interactive Effects)
+jsrepo add Animations/AnimatedContent    # Content reveal animations
+jsrepo add Animations/BlobCursor         # Blob-style cursor effect
+jsrepo add Animations/ClickSpark         # Click interaction sparks
+jsrepo add Animations/Crosshair          # Crosshair cursor overlay
+jsrepo add Animations/FadeContent        # Fade in/out content
+jsrepo add Animations/GlareHover         # Glare hover effects
+jsrepo add Animations/ImageTrail         # Image trail effects
+jsrepo add Animations/Magnet             # Magnetic hover effects
+jsrepo add Animations/MagnetLines        # Magnetic line animations
+jsrepo add Animations/MetaBalls          # Meta ball animations
+jsrepo add Animations/MetallicPaint      # Metallic paint effects
+jsrepo add Animations/Noise              # Noise texture effects
+jsrepo add Animations/PixelTrail         # Pixel trail animations
+jsrepo add Animations/PixelTransition    # Pixel-based transitions
+jsrepo add Animations/Ribbons            # Ribbon animations
+jsrepo add Animations/SplashCursor       # Splash cursor effects
+jsrepo add Animations/StarBorder         # Animated star borders
+
+
+
+
+
+
+
+
+# Backgrounds (Visual Effects)
+jsrepo add Backgrounds/Aurora            # Aurora background effect
+jsrepo add Backgrounds/Balatro           # Balatro-style background
+jsrepo add Backgrounds/Ballpit           # Ball pit animation
+jsrepo add Backgrounds/Beams             # Light beam effects
+jsrepo add Backgrounds/Dither            # Dithered backgrounds
+jsrepo add Backgrounds/DotGrid           # Animated dot grids
+jsrepo add Backgrounds/GridDistortion    # Distorted grid effects
+jsrepo add Backgrounds/GridMotion        # Moving grid patterns
+jsrepo add Backgrounds/Hyperspeed        # Hyperspeed tunnel effect
+jsrepo add Backgrounds/Iridescence       # Iridescent backgrounds
+jsrepo add Backgrounds/LetterGlitch      # Glitched letter effects
+jsrepo add Backgrounds/Lightning         # Lightning effects
+jsrepo add Backgrounds/LiquidChrome      # Liquid chrome effects
+jsrepo add Backgrounds/Orb               # Floating orb effects
+jsrepo add Backgrounds/Particles         # Particle systems
+jsrepo add Backgrounds/ShapeBlur         # Blurred shape backgrounds
+jsrepo add Backgrounds/Silk              # Silk texture effects
+jsrepo add Backgrounds/Squares           # Animated squares
+jsrepo add Backgrounds/Threads           # Thread-like animations
+jsrepo add Backgrounds/Waves             # Wave animations
+
+
+
+
+
+
+
+
+# Components (UI Elements)
+jsrepo add Components/AnimatedList       # Animated list components
+jsrepo add Components/BounceCards        # Bouncing card animations
+jsrepo add Components/CardSwap           # Card swapping effects
+jsrepo add Components/Carousel           # Interactive carousels
+jsrepo add Components/ChromaGrid         # Chromatic grid layouts
+jsrepo add Components/CircularGallery    # Circular image galleries
+jsrepo add Components/Counter            # Animated counters
+jsrepo add Components/DecayCard          # Decay effect cards
+jsrepo add Components/Dock               # macOS-style dock
+jsrepo add Components/ElasticSlider      # Elastic slider controls
+jsrepo add Components/FlowingMenu        # Flowing menu animations
+jsrepo add Components/FluidGlass         # Glass morphism effects
+jsrepo add Components/FlyingPosters      # Flying poster animations
+jsrepo add Components/Folder             # Folder-style components
+jsrepo add Components/GlassIcons         # Glass-style icons
+jsrepo add Components/GooeyNav           # Gooey navigation effects
+jsrepo add Components/InfiniteMenu       # Infinite scrolling menus
+jsrepo add Components/InfiniteScroll     # Infinite scroll components
+jsrepo add Components/Lanyard            # Discord Lanyard integration
+jsrepo add Components/ModelViewer        # 3D model viewers
+jsrepo add Components/PixelCard          # Pixelated card effects
+jsrepo add Components/RollingGallery     # Rolling gallery animations
+jsrepo add Components/SpotlightCard      # Spotlight card effects
+jsrepo add Components/Stack              # Stack layout components
+jsrepo add Components/Stepper            # Step-by-step components
+jsrepo add Components/TiltedCard         # Tilted card animations
+
+
+
+
+
+
+
+
+# TextAnimations (Typography Effects)
+jsrepo add TextAnimations/ASCIIText      # ASCII art text effects
+jsrepo add TextAnimations/BlurText       # Blurred text animations
+jsrepo add TextAnimations/CircularText   # Circular text layouts
+jsrepo add TextAnimations/CountUp        # Counting number animations
+jsrepo add TextAnimations/DecryptedText  # Decryption text effects
+jsrepo add TextAnimations/FallingText    # Falling text animations
+jsrepo add TextAnimations/FuzzyText      # Fuzzy text effects
+jsrepo add TextAnimations/GlitchText     # Glitch text animations
+jsrepo add TextAnimations/GradientText   # Gradient text effects
+jsrepo add TextAnimations/RotatingText   # Rotating text animations
+jsrepo add TextAnimations/ScrambledText  # Scrambled text effects
+jsrepo add TextAnimations/ScrollFloat    # Scroll-based floating text
+jsrepo add TextAnimations/ScrollReveal   # Scroll reveal animations
+jsrepo add TextAnimations/ScrollVelocity # Velocity-based scroll text
+jsrepo add TextAnimations/ShinyText      # Shiny text effects
+jsrepo add TextAnimations/SplitText      # Split text animations
+jsrepo add TextAnimations/TextCursor     # Animated text cursors
+jsrepo add TextAnimations/TextPressure   # Pressure-sensitive text
+jsrepo add TextAnimations/TrueFocus      # Focus-based text effects
+jsrepo add TextAnimations/VariableProximity # Proximity-based text
+```
+
+
+
+
+
+
+
+
+3.2 · Global Interactive Effects
+For site-wide interactive effects (animations, overlays, cursors):
+- Create reusable global components in `/app/components/Global*`
+- Add to layout.tsx with proper z-index layering (z-50+ for overlays)
+- Use fixed positioning with `pointer-events-none` for non-interactive overlays
+- Always include SSR guards for browser-only APIs (window, document, canvas)
+
+
+
+
+
+
+
+
+3.3 Component Creation Checklist ★ PREVENT COMMON ISSUES
+Before creating any component, verify:
+- [ ] All color classes use kebab-case naming (`text-deep-navy` not `text-deepNavy`)
+- [ ] Only use existing Tailwind classes (no custom `rounded-*` variants like `rounded-button`)
+- [ ] Button components follow size hierarchy: sm(h-10), md(h-14), lg(h-16)
+- [ ] All text content properly escapes apostrophes (&apos; in JSX)
+- [ ] Remove unused imports before committing
+- [ ] Icons use professional SVG libraries, never emojis
+- [ ] Components include proper TypeScript interfaces
+- [ ] Layout components use CSS Grid system correctly
+- [ ] Test responsive behavior on mobile and desktop
+- [ ] Verify all custom classes exist in Tailwind config
+- [ ] Use path aliases (@/) for all internal imports
+- [ ] Follow consistent export pattern (named exports for layout primitives)
+- [ ] Verify import statements match export patterns
+- [ ] Test imports work with both dev server and build
+
+
+
+
+
+
+
+
+4 · Quality gates ★ ENHANCED VALIDATION & PRE-DEVELOPMENT CHECKS
+ESLint — Next core-web-vitals, eslint-plugin-tailwindcss.
+Prettier — 2-space indent, single quotes.
+Coverage — touched-line ≥ 90 % (CI enforced).
+Optional (enable on request): Lighthouse budgets & axe-core a11y tests.
+
+
+
+
+
+
+
+
+**Pre-Development Checklist:**
+- [ ] Run `pnpm lint` before any component work
+- [ ] Verify path aliases are configured in tsconfig.json (baseUrl, paths)
+- [ ] Test import resolution with `pnpm build` before coding
+- [ ] Confirm component export/import conventions are followed
+- [ ] Validate color token usage matches design/system/tokens.ts
+- [ ] Test responsive layout on mobile/desktop during development
+- [ ] Verify all custom classes exist in Tailwind config
+- [ ] Check for unescaped special characters in content
+- [ ] Verify all custom design tokens are added to safelist
+- [ ] Confirm layout primitive dynamic classes are safelisted
+- [ ] Test custom classes work with `pnpm build` and browser inspector
+- [ ] Validate no dynamically generated classes are missing from safelist
+
+
+
+
+
+
+
+
+**Pre-Commit Quality Gates:**
+- ESLint with zero warnings
+- Color class validation
+- Build success with zero errors
+- Layout primitive functionality test
+
+
+
+
+
+
+
+
+5 · PR & deploy workflow
+Conventional Commits → protected main
+CI: lint → unit → E2E → vercel build --prod
+"[skip build]" in commit bypasses Vercel via .vercel/skip-build.sh
+/api/health pinged by Checkly post-deploy (optional)
+
+
+
+
+
+
+
+
+**Interactive Component Testing:**
+- Test global effects work across all pages
+- Verify layered backgrounds show underlying animations
+- Check animation timing and visual direction
+- Validate responsive behavior and performance
+- Test SSR/client hydration without errors
+
+
+
+
+
+
+
+
+6 · Image optimisation ★ AVIF / WebP + External Domains
+// next.config.js
+/** @type {import('next').NextConfig} */
+module.exports = {
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
+};
+
+
+
+
+
+
+
+
+**Critical Setup Requirements:**
+- Use next/image only for all images
+- **ALWAYS configure external domains** before using external images
+- Local exports need sharp ≥ 0.32
+- Use modern `remotePatterns` instead of deprecated `domains` array
+
+
+
+
+
+
+
+
+**Common External Image Sources:**
+- **Unsplash**: `images.unsplash.com` (most common via Unsplash MCP)
+- **Pexels**: `images.pexels.com`
+- **Custom CDN**: Add your specific CDN hostnames
+
+
+
+
+
+
+
+
+**⚠️ Common Pitfall:** Forgetting to configure external domains results in runtime error:
+```
+Error: Invalid src prop (...) hostname "images.unsplash.com" is not configured under images in your next.config.js
+```
+
+
+
+
+
+
+
+
+**Security Note:** Only add trusted domains. Each remotePattern should be as specific as possible for security.
+
+
+
+
+
+
+
+
+6.5 · Professional Iconography ★ NO EMOJIS
+
+
+
+
+
+
+
+
+**NEVER use emojis for icons in professional projects.** Always use proper SVG icons.
+
+
+
+
+
+
+
+
+**✅ Approved Icon Approach:**
+- **Style:** Line-style, minimalist SVG icons
+- **Colors:** Use brand token colors or `currentColor` for easy theming
+- **Sizing:** Consistent with Tailwind sizing: `w-4 h-4` (small), `w-6 h-6` (buttons), `w-8 h-8` (large displays)
+- **Implementation:** Inline SVG components with proper accessibility
+
+
+
+
+
+
+
+
+**❌ Avoid:**
+- Emojis in any interface elements (🎯 📞 📧 ⭐ etc.)
+- Icon fonts (accessibility and performance issues)
+- Inconsistent icon styles within the same project
+- Overly decorative or detailed icons
+
+
+
+
+
+
+
+
+**📦 Recommended Icon Libraries:**
+```bash
+# Heroicons (recommended) - clean, consistent, multiple weights
+npm install @heroicons/react
+
+
+
+
+
+
+
+
+# Lucide React - minimalist, outline style
+npm install lucide-react
+
+
+
+
+
+
+
+
+# React Icons (use sparingly, maintain consistency)
+npm install react-icons
+```
+
+
+
+
+
+
+
+
+**🎨 Professional Implementation:**
+```tsx
+// Example: Contact icons with brand colors
+import { PhoneIcon, EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline'
+
+
+
+
+
+
+
+
+// Small icons in content
+<PhoneIcon className="w-4 h-4 text-slate" />
+
+
+
+
+
+
+
+
+// Button icons with brand colors
+<EnvelopeIcon className="w-6 h-6 text-mint" />
+
+
+
+
+
+
+
+
+// Large display icons
+<ClockIcon className="w-8 h-8 text-coral" />
+```
+
+
+
+
+
+
+
+
+**🔧 Icon Component Pattern:**
+```tsx
+// Create reusable icon wrapper for consistency
+const Icon = ({ icon: IconComponent, size = 'md', color = 'slate', ...props }) => {
+  const sizeClasses = {
+    sm: 'w-4 h-4',
+    md: 'w-6 h-6',
+    lg: 'w-8 h-8'
+  }
+ 
+  return <IconComponent className={`${sizeClasses[size]} text-${color}`} {...props} />
+}
+
+
+
+
+
+
+
+
+// Usage
+<Icon icon={PhoneIcon} size="sm" color="mint" />
+```
+
+
+
+
+
+
+
+
+**Component Styling Consistency:**
+- Button sizing: Use standard height classes (h-10, h-12, h-14, h-16)
+- Border radius: Use standard Tailwind classes (rounded, rounded-lg, rounded-xl, rounded-3xl)
+- Never create custom Tailwind classes like `rounded-button`
+- Shadows: Progressive depth system (shadow-sm → shadow-lg → shadow-xl)
+- Minimum button widths for visual consistency (min-w-[120px] for small, min-w-[140px] for medium)
+- Enhanced button padding: px-6 (small), px-8 (medium), px-10 (large)
+- Font weights: font-medium (small), font-bold (medium/large) for proper visual hierarchy
+
+
+
+
+
+
+
+
+6.6 · Tailwind Safelist Template ★ PREVENT SCANNING ISSUES
+
+
+**Complete Safelist Example:**
+```typescript
+// tailwind.config.ts - Complete safelist for template
+export default {
+  safelist: [
+    // Custom design tokens (from tokens.ts)
+    'max-w-container',
+   
+    // Layout primitive dynamic classes
+    'col-span-1', 'col-span-2', 'col-span-3', 'col-span-4', 'col-span-5', 'col-span-6',
+    'col-span-7', 'col-span-8', 'col-span-9', 'col-span-10', 'col-span-11', 'col-span-12',
+    'md:col-span-1', 'md:col-span-2', 'md:col-span-3', 'md:col-span-4', 'md:col-span-5', 'md:col-span-6',
+    'md:col-span-7', 'md:col-span-8', 'md:col-span-9', 'md:col-span-10', 'md:col-span-11', 'md:col-span-12',
+    'lg:col-span-1', 'lg:col-span-2', 'lg:col-span-3', 'lg:col-span-4', 'lg:col-span-5', 'lg:col-span-6',
+    'lg:col-span-7', 'lg:col-span-8', 'lg:col-span-9', 'lg:col-span-10', 'lg:col-span-11', 'lg:col-span-12',
+   
+    // Add other dynamic classes as needed
+  ],
+  // ... rest of config
+};
+```
+
+
+
+
+
+
+
+
+7 · CSS & Font guidelines ★ CRITICAL
+7.1 Tailwind
+Stay on 3.4.x.
+PostCSS config: tailwindcss: {} (not @tailwindcss/postcss).
+7.2 Google Fonts
+// layout.tsx
+import { Rakkas, Proza_Libre } from 'next/font/google';
+
+
+
+
+
+
+
+
+const rakkas = Rakkas({ subsets: ['latin'], variable: '--font-display' });
+const proza  = Proza_Libre({ subsets: ['latin'], variable: '--font-body' });
+
+
+
+
+
+
+
+
+Never use @import inside CSS.
+7.3 Import order
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* custom styles */
+
+
+
+
+
+
+
+
+@import statements (rare) must come before all rules.
+
+
+
+
+
+
+
+
+7.4 Animation Guidelines
+- Define reusable keyframe animations in globals.css
+- Use explicit color values in animations when Tailwind classes don't work
+- Test animation directions: left-to-right typically starts at positive % values
+- Include animation-delay for staggered or sequential effects
+- Standard durations: 6s for text effects, 3s for UI micro-interactions
+
+
+
+
+
+
+
+
+8 · Optional extensions (add only when requested)
+Feature
+How to enable
+Brand-guide theming
+Add design/brand-guide.md + run pnpm tokens:sync
+Lighthouse CI
+.github/workflows/seo-a11y.yml with LHCI ≥ 95
+Dark mode
+Tailwind dark: variant + dark-token palette
+
+
+
+
+
+
+
+
+9 · Scripts ★ ENHANCED WITH VALIDATION
+{
+  "scripts": {
+    "dev":         "next dev",
+    "build":       "next build",
+    "start":       "next start",
+    "test":        "jest --watch",
+    "e2e":         "playwright test",
+    "lint":        "eslint . --ext .ts,.tsx --fix",
+    "lint:colors": "eslint . --rule 'no-restricted-syntax: [error, CallExpression[callee.name=className][arguments.0.value=/[A-Z]/]]'",
+    "validate:tokens": "node scripts/validate-design-tokens.js",
+    "pre-commit":  "pnpm lint && pnpm validate:tokens && pnpm build",
+    "tokens:sync": "echo 'Tokens automatically synced via tailwind.config.ts'"
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+10 · Dev dependencies
+eslint-plugin-jsx-a11y ^6
+tailwindcss ^3.4.0
+postcss ^8
+autoprefixer ^10
+sharp ^0.32                 # AVIF support
+stylelint-design-system     # blocks non-token colours/spacings
+
+
+
+
+
+
+
+
+# optional
+lighthouse ^11
+@lhci/cli ^0.13
+axe-core ^4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11 · Indexed / ignore paths
+indexedPaths:
+/app
+/tests
+/docs
+
+
+
+
+
+
+
+
+ignorePaths:
+/.next
+/coverage
+/node_modules
+
+
+
+
+
+
+
+
+Test file pattern
+**/*.{test,spec}.{ts,tsx}
+
+
+
+
+
+
+
+
+Optional performance budget
+{
+  "lighthouse": { "fcp": 1000, "cls": 0.1, "tbt": 200 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+12 · Summary
+This is a **reusable template** with universal baseline rules that never change.
+Per-project customisation lives in design/system/tokens.ts + brand-guide.md.
+
+
+
+
+
+
+
+
+**For new projects:** Follow section 0.1 Template Initialization.
+**For ongoing work:** React Bits available via `jsrepo add [component]`.
+**Design system:** All colors, spacing, fonts must reference tokens.
+
+
+
+
+
+
+
+
+**Component Architecture Review:**
+- [ ] Remove unused component library imports
+- [ ] Consolidate duplicate interactive effects into global components
+- [ ] Verify background transparency allows effects to show through
+- [ ] Test all animations work in both development and production
+- [ ] Validate SSR compatibility for all interactive components
+- [ ] **Replace all emojis with professional SVG icons**
+- [ ] Ensure icon consistency (same library, sizing, colors)
+- [ ] Implement proper icon accessibility (aria-labels where needed)
+
+
+
+
+
+
+
+
+After editing tokens, Tailwind utilities are automatically regenerated on next build/dev.
+
+
+
+
+
+
+
+
+13 · Common Patterns & Debugging
+**Import Issues:** Use full paths for component libraries, check documentation
+**SSR Errors:** Add client directives and browser environment guards  
+**Invisible Effects:** Check z-index layering and background opacity
+**Animation Problems:** Verify keyframe directions and timing values
+**Canvas Not Rendering:** Validate initial dimensions and resize handlers
+
+
+
+
+
+
+
+
+14 · Common Pitfalls & Prevention ★ LEARN FROM REAL ISSUES
+**Avoid These Common Issues:**
+- ❌ `className="text-deepNavy"` → ✅ `className="text-deep-navy"`
+- ❌ `className="text-pacificTeal"` → ✅ `className="text-pacific-teal"`
+- ❌ `className="border-mistGrey"` → ✅ `className="border-mist-grey"`
+- ❌ `className="rounded-button"` → ✅ `className="rounded-3xl"`
+- ❌ `<Row className="flex">` → ✅ `<Row className="grid grid-cols-12">`
+- ❌ `Don't do this` → ✅ `Don&apos;t do this`
+- ❌ Unused imports → ✅ Clean imports before commit
+- ❌ `h-12` for buttons → ✅ `h-14` for better visual weight
+- ❌ Thin button padding → ✅ `px-8` for proper proportions
+- ❌ External images without domain config → ✅ Configure `remotePatterns` in next.config.js first
+- ❌ `import { Component } from './Component'` with default export → ✅ Match import/export patterns
+- ❌ Missing path alias config → ✅ Configure `@/*` in tsconfig.json before first import
+- ❌ Custom tokens without safelist → ✅ Add all custom token classes to safelist
+- ❌ Dynamic classes not in safelist → ✅ Add all possible dynamic class combinations to safelist
+- ❌ `max-w-container` not working → ✅ Check if custom class is in safelist
+- ❌ `col-span-*` classes not applying → ✅ Verify all grid spans are safelisted
+
+
+
+
+
+
+
+
+**Prevention Tools:**
+- Use ESLint autofix: `pnpm lint --fix`
+- Validate before commit: `pnpm pre-commit`
+- Reference tokens.ts for color naming  
+- Check Tailwind docs for existing classes before creating custom ones
+- Test layout on mobile/desktop during development
+- Use browser dev tools to inspect applied styles
+- Test both `pnpm dev` and `pnpm build` for import resolution
+
+
+
+
+
+
+
+
+**Color Class Debugging:**
+- If text appears invisible, check for camelCase color classes
+- Always use kebab-case: `text-deep-navy` not `text-deepNavy`
+- Reference design/system/tokens.ts for correct color names
+- Use browser inspector to verify classes are being applied
+
+
+
+
+
+
+
+
+**Layout Debugging:**
+- Row components should use CSS Grid, not flexbox
+- Col components should use `col-span-*` classes
+- Check Container max-width and padding constraints
+- Verify responsive behavior on different screen sizes
+
+
+
+
+
+
+
+
+**Tailwind Safelist Debugging:**
+- If custom classes don't work, check if they're in safelist
+- Use browser inspector to verify classes exist in generated CSS
+- Test layout primitives independently to isolate safelist issues
+- Generate complete CSS with `pnpm build` to verify class generation
+
+
+
+
+
+
+
+
+15 · Path/Import Troubleshooting ★ COMMON ISSUES RESOLUTION
+
+
+
+
+**Common Path/Import Debugging:**
+- **"Module not found @/..."**: Check tsconfig.json baseUrl and paths configuration
+- **"Element type is invalid"**: Verify export/import pattern consistency (named vs default)
+- **Build works but dev fails**: Clear .next folder and restart dev server
+- **"does not contain a default export"**: Component uses named export but imported as default
+- **Import resolution works locally but fails in CI**: Ensure baseUrl is "." not missing
+
+
+
+
+**Step-by-Step Import Issue Resolution:**
+1. **Verify tsconfig.json configuration:**
+   ```json
+   {
+     "compilerOptions": {
+       "baseUrl": ".",
+       "paths": {
+         "@/*": ["./*"]
+       }
+     }
+   }
+   ```
+
+
+
+
+2. **Check export/import pattern consistency:**
+   ```tsx
+   // ✅ Consistent named exports/imports
+   export const Component = () => {}
+   import { Component } from '@/path/to/component'
+   
+   // ✅ Consistent default exports/imports  
+   export default Component
+   import Component from '@/path/to/component'
+   ```
+
+
+
+
+3. **Test import resolution:**
+   ```bash
+   # Clear cache and test both modes
+   rm -rf .next
+   pnpm build && pnpm dev
+   ```
+
+
+
+
+4. **Verify path alias usage:**
+   ```tsx
+   // ✅ Use path aliases consistently
+   import { Container } from '@/app/layout-primitives'
+   
+   // ❌ Avoid relative imports for layout primitives
+   import { Container } from '../layout-primitives'
+   ```
+
+
+
+
+**Template Setup Verification Checklist:**
+- [ ] `tsconfig.json` includes `baseUrl: "."` and `paths: {"@/*": ["./*"]}`
+- [ ] All layout primitives use named exports consistently
+- [ ] All imports use `@/` path alias for internal components
+- [ ] `pnpm build` succeeds without module resolution errors
+- [ ] Both dev and build modes work identically
+
+
+
+
+
+
+
+
+Happy shipping 🎉
+
+
+

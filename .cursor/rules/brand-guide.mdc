@@ -1,0 +1,6 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+MUST BE PRESENT: Do not let the build start until this is populated with an actual brand guide 
