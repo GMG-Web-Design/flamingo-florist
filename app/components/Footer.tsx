@@ -1,7 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, SparklesIcon } from '@heroicons/react/24/outline'
-import { FlamingoIcon } from './FlamingoIcon'
 import { Section, Container, Row, Col } from '@/app/layout-primitives'
 
 export const Footer = () => {

@@ -1,9 +1,9 @@
 'use client'
 import React, { useState } from 'react'
-import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline'
+import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, ChatBubbleLeftRightIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import { Section, Container, Row, Col } from '@/app/layout-primitives'
 import { Button } from '@/app/components/Button'
-import { FlamingoIcon } from '@/app/components/FlamingoIcon'
+import Image from 'next/image'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -31,26 +31,44 @@ export default function ContactPage() {
   return (
     <div>
       {/* Hero Section */}
-      <Section className="relative bg-gradient-to-br from-cream via-dusty-rose/20 to-coral-sunset/30 py-20">
-        <Container>
+      <Section className="relative py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hero-backgrounds/contact-hero-background.jpg"
+            alt="Delicate flowers with raindrops background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-cream/85 via-dusty-rose/70 to-coral-sunset/75" />
+        </div>
+
+        <Container className="relative z-10">
           <Row>
             <Col span={12}>
               <div className="text-center">
-                <FlamingoIcon size="lg" className="text-flamingo-pink mx-auto mb-6 animate-float" />
-                <h1 className="font-display text-5xl md:text-6xl font-bold text-deep-navy mb-6">
-                  Get In Touch
-                </h1>
-                <p className="text-xl md:text-2xl text-warm-gray max-w-3xl mx-auto mb-8">
-                  Call and tell us your story. Let&apos;s see what you&apos;re thinking. We want to make you feel surprised, 
-                  special, and absolutely delighted.
-                </p>
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 inline-block">
-                  <p className="font-display text-2xl text-deep-navy font-semibold mb-2">
-                    Ready to feel special?
+                <div className="bg-white/75 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg mx-auto max-w-4xl">
+                  <div className="mb-6">
+                    <div className="inline-flex items-center justify-center w-20 h-20 bg-flamingo-pink/20 backdrop-blur-sm rounded-full border-2 border-flamingo-pink/30 animate-float">
+                      <EnvelopeIcon className="w-10 h-10 text-flamingo-pink" />
+                    </div>
+                  </div>
+                  <h1 className="font-display text-5xl md:text-6xl font-bold text-deep-navy mb-6">
+                    Get In Touch
+                  </h1>
+                  <p className="text-xl md:text-2xl text-deep-navy max-w-3xl mx-auto mb-8 font-medium">
+                    Call and tell us your story. Let&apos;s see what you&apos;re thinking. We want to make you feel surprised, 
+                    special, and absolutely delighted.
                   </p>
-                  <p className="text-flamingo-pink font-medium">
-                    We&apos;re here to listen and bring your vision to life.
-                  </p>
+                  <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 inline-block shadow-lg">
+                    <p className="font-display text-2xl text-deep-navy font-semibold mb-2">
+                      Ready to feel special?
+                    </p>
+                    <p className="text-flamingo-pink font-medium">
+                      We&apos;re here to listen and bring your vision to life.
+                    </p>
+                  </div>
                 </div>
               </div>
             </Col>
@@ -318,7 +336,7 @@ export default function ContactPage() {
                   I want them to know they are special.&quot;
                 </blockquote>
                 <div className="flex justify-center items-center gap-4">
-                  <FlamingoIcon size="md" className="text-flamingo-pink" />
+                  <SparklesIcon className="w-6 h-6 text-flamingo-pink" />
                   <p className="text-deep-navy font-medium">Our Promise to You</p>
                 </div>
               </div>

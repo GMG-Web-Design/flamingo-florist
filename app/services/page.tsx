@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { SparklesIcon, GiftIcon, StarIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
 import { Section, Container, Row, Col } from '@/app/layout-primitives'
 import { Button } from '@/app/components/Button'
-import { FlamingoIcon } from '@/app/components/FlamingoIcon'
 
 export default function ServicesPage() {
   const services = [
@@ -19,7 +18,7 @@ export default function ServicesPage() {
         'Aisle petals & arrangements',
         'Custom color coordination'
       ],
-      image: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      image: '/images/wedding/elegant-rustic-wedding-bouquet-table.jpg',
       starting: 'Starting at $85'
     },
     {
@@ -34,7 +33,7 @@ export default function ServicesPage() {
         'Grand opening displays',
         'Custom themed designs'
       ],
-      image: 'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      image: '/images/arrangements/luxury-floral-centerpiece-soft-tones.jpg',
       starting: 'Starting at $65'
     },
     {
@@ -49,7 +48,7 @@ export default function ServicesPage() {
         'Spa & relaxation sets',
         'Custom surprise packages'
       ],
-      image: 'https://images.unsplash.com/photo-1574684891174-df6b02ab38a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      image: '/images/arrangements/blue-truck-flower-arrangement.jpg',
       starting: 'Starting at $45'
     },
     {
@@ -64,7 +63,7 @@ export default function ServicesPage() {
         'Standing arrangements',
         'Tribute gardens'
       ],
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+      image: '/images/memorial/patriotic-funeral-tribute-display.jpg',
       starting: 'Starting at $55'
     }
   ]
@@ -81,26 +80,44 @@ export default function ServicesPage() {
   return (
     <div>
       {/* Hero Section */}
-      <Section className="relative bg-gradient-to-br from-cream via-dusty-rose/20 to-coral-sunset/30 py-20">
-        <Container>
+      <Section className="relative py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hero-backgrounds/services-hero-background.jpg"
+            alt="Wedding ceremony floral arrangements background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-cream/85 via-dusty-rose/65 to-coral-sunset/75" />
+        </div>
+
+        <Container className="relative z-10">
           <Row>
             <Col span={12}>
               <div className="text-center">
-                <FlamingoIcon size="lg" className="text-flamingo-pink mx-auto mb-6 animate-float" />
-                <h1 className="font-display text-5xl md:text-6xl font-bold text-deep-navy mb-6">
-                  Our Services
-                </h1>
-                <p className="text-xl md:text-2xl text-warm-gray max-w-3xl mx-auto mb-8">
-                  Beautiful flowers, all sizes, shapes, and colors. From traditional to whimsical, 
-                  fun to serious. Everything is custom made to fit your needs.
-                </p>
-                <div className="flex justify-center items-center gap-4 mb-8">
-                  <div className="flex text-soft-gold">
-                    {[...Array(5)].map((_, i) => (
-                      <StarIcon key={i} className="w-6 h-6 fill-current" />
-                    ))}
+                <div className="bg-white/75 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg mx-auto max-w-4xl">
+                  <div className="mb-6">
+                    <div className="inline-flex items-center justify-center w-20 h-20 bg-flamingo-pink/20 backdrop-blur-sm rounded-full border-2 border-flamingo-pink/30 animate-float">
+                      <SparklesIcon className="w-10 h-10 text-flamingo-pink" />
+                    </div>
                   </div>
-                  <span className="text-deep-navy font-medium">30 Years of Excellence</span>
+                  <h1 className="font-display text-5xl md:text-6xl font-bold text-deep-navy mb-6">
+                    Our Services
+                  </h1>
+                  <p className="text-xl md:text-2xl text-deep-navy max-w-3xl mx-auto mb-8 font-medium">
+                    Beautiful flowers, all sizes, shapes, and colors. From traditional to whimsical, 
+                    fun to serious. Everything is custom made to fit your needs.
+                  </p>
+                  <div className="flex justify-center items-center gap-4 mb-8">
+                    <div className="flex text-soft-gold">
+                      {[...Array(5)].map((_, i) => (
+                        <StarIcon key={i} className="w-6 h-6 fill-current" />
+                      ))}
+                    </div>
+                    <span className="text-deep-navy font-medium">30 Years of Excellence</span>
+                  </div>
                 </div>
               </div>
             </Col>
@@ -296,7 +313,7 @@ export default function ServicesPage() {
           <Row>
             <Col span={12}>
               <div className="text-center">
-                <FlamingoIcon size="lg" className="text-deep-navy mx-auto mb-6" />
+                <SparklesIcon className="w-16 h-16 text-deep-navy mx-auto mb-6" />
                 <h2 className="font-display text-4xl md:text-5xl font-bold text-deep-navy mb-6">
                   Ready to Create Something Beautiful?
                 </h2>

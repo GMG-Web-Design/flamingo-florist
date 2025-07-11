@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { Bars3Icon, XMarkIcon, PhoneIcon, SparklesIcon } from '@heroicons/react/24/outline'
-import { FlamingoIcon } from './FlamingoIcon'
 import { Button } from './Button'
 
 export const Navigation = () => {
