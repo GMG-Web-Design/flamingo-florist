@@ -56,8 +56,12 @@ const config: Config = {
     // Text opacity variants
     'text-cream/80',
     'text-cream/60',
+    'text-cream/40',
     'text-white/90',
+    'text-white/80',
+    'text-white/60',
     'border-cream/20',
+    'border-cream/10',
     
     // Layout primitive dynamic classes
     'col-span-1', 'col-span-2', 'col-span-3', 'col-span-4', 'col-span-5', 'col-span-6',

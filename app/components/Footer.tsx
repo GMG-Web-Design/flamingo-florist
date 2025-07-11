@@ -17,10 +17,10 @@ export const Footer = () => {
                   <SparklesIcon className="w-8 h-8 text-flamingo-pink" />
                   <div>
                     <h3 className="font-display text-2xl font-bold text-cream">Flamingo Florist</h3>
-                    <p className="text-cream/80 text-sm">30 Years of Making Moments Special</p>
+                    <p className="text-cream text-sm">30 Years of Making Moments Special</p>
                   </div>
                 </div>
-                <p className="text-cream/80 leading-relaxed mb-6">
+                <p className="text-cream leading-relaxed mb-6">
                   We don&apos;t create cookie-cutter arrangements. We craft works of art that make people 
                   smile, cry happy tears, and feel truly special. Every flower tells a story.
                 </p>
