@@ -28,6 +28,8 @@ const config: Config = {
     'text-soft-gold',
     'text-deep-navy',
     'text-warm-gray',
+    'text-deep-navy/80',
+    'text-warm-gray/80',
     'bg-flamingo-pink',
     'bg-coral-sunset',
     'bg-dusty-rose',
