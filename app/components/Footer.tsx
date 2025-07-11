@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline'
+import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import { FlamingoIcon } from './FlamingoIcon'
 import { Section, Container, Row, Col } from '@/app/layout-primitives'
 
@@ -14,7 +14,7 @@ export const Footer = () => {
             <Col span={12} md={6} lg={4}>
               <div className="mb-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <FlamingoIcon size="md" className="text-flamingo-pink" />
+                  <SparklesIcon className="w-8 h-8 text-flamingo-pink" />
                   <div>
                     <h3 className="font-display text-2xl font-bold text-cream">Flamingo Florist</h3>
                     <p className="text-cream/80 text-sm">30 Years of Making Moments Special</p>

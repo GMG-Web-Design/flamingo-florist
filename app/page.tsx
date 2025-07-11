@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { PhoneIcon, EnvelopeIcon, HeartIcon, SparklesIcon, StarIcon } from '@heroicons/react/24/outline'
+import { PhoneIcon, EnvelopeIcon, SparklesIcon, StarIcon } from '@heroicons/react/24/outline'
 import { Section, Container, Row, Col } from '@/app/layout-primitives'
 import { Button } from '@/app/components/Button'
 import { FlamingoIcon } from '@/app/components/FlamingoIcon'
@@ -18,7 +18,7 @@ export default function HomePage() {
             <SparklesIcon className="w-8 h-8 text-coral-sunset" />
           </div>
           <div className="absolute bottom-32 left-40 animate-float" style={{ animationDelay: '2s' }}>
-            <HeartIcon className="w-10 h-10 text-dusty-rose" />
+                            <SparklesIcon className="w-10 h-10 text-dusty-rose" />
           </div>
           <div className="absolute bottom-20 right-20 animate-float" style={{ animationDelay: '0.5s' }}>
             <FlamingoIcon size="md" className="text-sage-green" />
@@ -46,7 +46,7 @@ export default function HomePage() {
                     Tell Us Your Story
                   </Button>
                   <Button variant="outline" size="lg" className="animate-slide-up" style={{ animationDelay: '0.2s' }}>
-                    <HeartIcon className="w-6 h-6 mr-2" />
+                    <SparklesIcon className="w-6 h-6 mr-2" />
                     View Our Work
                   </Button>
                 </div>
@@ -130,7 +130,7 @@ export default function HomePage() {
           <Row gap="lg">
             <Col span={12} md={6} lg={3}>
               <div className="bg-cream/10 backdrop-blur-sm rounded-3xl p-8 text-center h-full">
-                <HeartIcon className="w-12 h-12 text-flamingo-pink mx-auto mb-4" />
+                <SparklesIcon className="w-12 h-12 text-flamingo-pink mx-auto mb-4" />
                 <h3 className="font-display text-2xl font-semibold text-cream mb-4">Weddings</h3>
                 <p className="text-cream/80 mb-6">
                   When brides and families walk in for the first time and see the vision we created 
@@ -150,7 +150,7 @@ export default function HomePage() {
             </Col>
             <Col span={12} md={6} lg={3}>
               <div className="bg-cream/10 backdrop-blur-sm rounded-3xl p-8 text-center h-full">
-                <HeartIcon className="w-12 h-12 text-dusty-rose mx-auto mb-4" />
+                <SparklesIcon className="w-12 h-12 text-dusty-rose mx-auto mb-4" />
                 <h3 className="font-display text-2xl font-semibold text-cream mb-4">Special Gifts</h3>
                 <p className="text-cream/80 mb-6">
                   Gift baskets filled with thoughtful surprises, from get-well packages to 

@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { HeartIcon, SparklesIcon, GiftIcon, StarIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
+import { SparklesIcon, GiftIcon, StarIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
 import { Section, Container, Row, Col } from '@/app/layout-primitives'
 import { Button } from '@/app/components/Button'
 import { FlamingoIcon } from '@/app/components/FlamingoIcon'
@@ -8,7 +8,7 @@ import { FlamingoIcon } from '@/app/components/FlamingoIcon'
 export default function ServicesPage() {
   const services = [
     {
-      icon: HeartIcon,
+      icon: SparklesIcon,
       title: 'Wedding Flowers',
       description: 'When brides and families walk in for the first time and see the vision we created with their thoughts, their eyes light up with smiles and glow.',
       features: [
@@ -53,7 +53,7 @@ export default function ServicesPage() {
       starting: 'Starting at $45'
     },
     {
-      icon: FlamingoIcon,
+      icon: SparklesIcon,
       title: 'Memorial Services',
       description: 'Honoring lives with dignity and beauty, creating meaningful tributes that celebrate memories and bring comfort during difficult times.',
       features: [
@@ -147,11 +147,7 @@ export default function ServicesPage() {
                 <Col span={12} lg={6} className={index % 2 === 1 ? 'lg:order-1' : ''}>
                   <div className="h-full flex flex-col justify-center">
                     <div className="mb-6">
-                      {service.icon === FlamingoIcon ? (
-                        <FlamingoIcon size="lg" className="text-flamingo-pink mb-4" />
-                      ) : (
-                        <service.icon className="w-12 h-12 text-flamingo-pink mb-4" />
-                      )}
+                      <service.icon className="w-12 h-12 text-flamingo-pink mb-4" />
                       <h3 className="font-display text-3xl md:text-4xl font-bold text-deep-navy mb-4">
                         {service.title}
                       </h3>
