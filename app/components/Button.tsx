@@ -15,7 +15,7 @@ export const Button = ({
   className, 
   ...props 
 }: ButtonProps) => {
-  const baseClasses = 'font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-flamingo-pink focus:ring-offset-2 focus:ring-offset-cream'
+  const baseClasses = 'font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-flamingo-pink focus:ring-offset-2 focus:ring-offset-cream whitespace-nowrap inline-flex items-center justify-center'
   
   const variantClasses = {
     primary: 'bg-flamingo-pink hover:bg-coral-sunset text-white shadow-lg hover:shadow-xl',

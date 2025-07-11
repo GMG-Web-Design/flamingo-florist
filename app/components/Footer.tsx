@@ -16,7 +16,7 @@ export const Footer = () => {
                 <div className="flex items-center gap-3 mb-6">
                   <FlamingoIcon size="md" className="text-flamingo-pink" />
                   <div>
-                    <h3 className="font-display text-2xl font-bold">Flamingo Florist</h3>
+                    <h3 className="font-display text-2xl font-bold text-cream">Flamingo Florist</h3>
                     <p className="text-cream/80 text-sm">30 Years of Making Moments Special</p>
                   </div>
                 </div>
@@ -38,21 +38,21 @@ export const Footer = () => {
                   <div className="flex items-center gap-3">
                     <PhoneIcon className="w-5 h-5 text-coral-sunset flex-shrink-0" />
                     <div>
-                      <p className="font-medium">(555) 123-4567</p>
+                      <p className="font-medium text-cream">(555) 123-4567</p>
                       <p className="text-cream/80 text-sm">Call and tell us your story</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <EnvelopeIcon className="w-5 h-5 text-coral-sunset flex-shrink-0" />
                     <div>
-                      <p className="font-medium">hello@flamingoflorist.com</p>
+                      <p className="font-medium text-cream">hello@flamingoflorist.com</p>
                       <p className="text-cream/80 text-sm">We&apos;d love to hear from you</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <MapPinIcon className="w-5 h-5 text-coral-sunset flex-shrink-0" />
                     <div>
-                      <p className="font-medium">123 Flower Street</p>
+                      <p className="font-medium text-cream">123 Flower Street</p>
                       <p className="text-cream/80 text-sm">Your Town, ST 12345</p>
                     </div>
                   </div>
@@ -69,15 +69,15 @@ export const Footer = () => {
                   <div className="space-y-2">
                     <div className="flex justify-between">
                       <span className="text-cream/80">Monday - Friday:</span>
-                      <span className="font-medium">9:00 AM - 6:00 PM</span>
+                      <span className="font-medium text-cream">9:00 AM - 6:00 PM</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-cream/80">Saturday:</span>
-                      <span className="font-medium">9:00 AM - 4:00 PM</span>
+                      <span className="font-medium text-cream">9:00 AM - 4:00 PM</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-cream/80">Sunday:</span>
-                      <span className="font-medium">Closed</span>
+                      <span className="font-medium text-cream">Closed</span>
                     </div>
                   </div>
                 </div>

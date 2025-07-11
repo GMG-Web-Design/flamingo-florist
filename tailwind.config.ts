@@ -24,6 +24,7 @@ const config: Config = {
     'text-coral-sunset',
     'text-dusty-rose',
     'text-sage-green',
+    'text-cream',
     'text-soft-gold',
     'text-deep-navy',
     'text-warm-gray',
@@ -50,6 +51,13 @@ const config: Config = {
     'hover:bg-deep-navy',
     'hover:text-white',
     'hover:text-flamingo-pink',
+    'hover:text-cream',
+    
+    // Text opacity variants
+    'text-cream/80',
+    'text-cream/60',
+    'text-white/90',
+    'border-cream/20',
     
     // Layout primitive dynamic classes
     'col-span-1', 'col-span-2', 'col-span-3', 'col-span-4', 'col-span-5', 'col-span-6',
