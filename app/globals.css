@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes petalDance {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(0) rotate(180deg);
+  }
+  75% {
+    transform: translateY(5px) rotate(270deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}
+
+/* Custom utility classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.animate-petal-dance {
+  animation: petalDance 4s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f6f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff6b9d;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff8a80;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus states */
+*:focus {
+  outline: 2px solid #ff6b9d;
+  outline-offset: 2px;
+}
+
+/* Custom gradient backgrounds */
+.bg-gradient-flamingo {
+  background: linear-gradient(135deg, #ff6b9d 0%, #ff8a80 100%);
+}
+
+.bg-gradient-sage {
+  background: linear-gradient(135deg, #87a96b 0%, #2c3e50 100%);
+}
+
+.bg-gradient-sunset {
+  background: linear-gradient(135deg, #ff8a80 0%, #e8a598 50%, #d4a574 100%);
+}
+
+/* Text effects */
+.text-gradient-flamingo {
+  background: linear-gradient(135deg, #ff6b9d 0%, #ff8a80 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-shadow-soft {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom decorative elements */
+.flamingo-accent::before {
+  content: '🦩';
+  margin-right: 0.5rem;
+}
+
+.flower-accent::before {
+  content: '🌸';
+  margin-right: 0.5rem;
+}
+
+.sparkle-accent::before {
+  content: '✨';
+  margin-right: 0.5rem;
+}
+
+/* Selection styling */
+::selection {
+  background: #ff6b9d;
+  color: white;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .text-responsive-hero {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+}
+
+@media (min-width: 769px) {
+  .text-responsive-hero {
+    font-size: 4rem;
+    line-height: 1.1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-responsive-hero {
+    font-size: 4.5rem;
+    line-height: 1.1;
+  }
+}
