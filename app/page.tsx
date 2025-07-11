@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <div className="relative">
       {/* Hero Section */}
-      <Section className="relative min-h-screen bg-gradient-to-br from-cream via-dusty-rose/20 to-coral-sunset/30 flex items-center justify-center overflow-hidden">
+      <Section className="relative min-h-[90vh] bg-gradient-to-br from-cream via-dusty-rose/20 to-coral-sunset/30 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 animate-float">
             <FlamingoIcon size="lg" className="text-flamingo-pink" />
@@ -294,34 +294,6 @@ export default function HomePage() {
           </Row>
         </Container>
       </Section>
-
-      {/* Footer */}
-      <footer className="bg-deep-navy text-cream py-12">
-        <Container>
-          <Row>
-            <Col span={12}>
-              <div className="text-center">
-                <FlamingoIcon size="md" className="text-flamingo-pink mx-auto mb-4" />
-                <p className="font-display text-2xl font-semibold mb-4">Flamingo Florist</p>
-                <p className="text-cream/80 mb-6">30 Years of Making Moments Special</p>
-                <div className="flex justify-center items-center gap-6 mb-6">
-                  <div className="flex items-center gap-2">
-                    <PhoneIcon className="w-5 h-5 text-flamingo-pink" />
-                    <span>(555) 123-4567</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <EnvelopeIcon className="w-5 h-5 text-flamingo-pink" />
-                    <span>hello@flamingoflorist.com</span>
-                  </div>
-                </div>
-                <p className="text-cream/60 text-sm">
-                  &copy; 2024 Flamingo Florist. All rights reserved. Made with love for 30 years.
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </footer>
     </div>
   )
 }

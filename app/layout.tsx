@@ -2,6 +2,8 @@ import React from 'react'
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
+import { Navigation } from './components/Navigation'
+import { Footer } from './components/Footer'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -63,8 +65,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfairDisplay.variable}`}>
       <body className="font-body antialiased bg-cream text-deep-navy">
-        <div className="min-h-screen">
-          {children}
+        <div className="min-h-screen flex flex-col">
+          <Navigation />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
         </div>
       </body>
     </html>
