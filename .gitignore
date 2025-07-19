@@ -35,3 +35,10 @@ pnpm-debug.log*
 
 # TypeScript
 *.tsbuildinfo 
+
+# Cursor IDE
+.cursor/
+.cursorindexingignore
+.specstory/
+Prompt-blueprint.md
+design/

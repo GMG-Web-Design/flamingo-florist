@@ -1,8 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
+import type { Metadata } from 'next'
 import { SparklesIcon, GiftIcon, StarIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
 import { Section, Container, Row, Col } from '@/app/layout-primitives'
 import { Button } from '@/app/components/Button'
+
+export const metadata: Metadata = {
+  title: 'Services - Flamingo Florist',
+  description: 'Wedding flowers, special events, custom arrangements, and memorial services. 30 years of creating beautiful floral designs for every occasion.',
+  keywords: ['wedding flowers', 'event flowers', 'custom arrangements', 'memorial flowers', 'floral design services'],
+}
 
 export default function ServicesPage() {
   const services = [

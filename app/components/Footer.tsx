@@ -109,16 +109,20 @@ export const Footer = () => {
                     <Link href="/contact" className="text-warm-gray hover:text-flamingo-pink transition-colors">
                       Contact
                     </Link>
-                    <span className="text-warm-gray">|</span>
-                    <span className="text-warm-gray">Privacy Policy</span>
-                    <span className="text-warm-gray">Terms of Service</span>
                   </div>
                   <div className="text-center md:text-right">
                     <p className="text-warm-gray text-sm">
-                      &copy; 2024 Flamingo Florist. All rights reserved.
+                      &copy; {new Date().getFullYear()} Flamingo Florist. All rights reserved.
                     </p>
                     <p className="text-deep-navy text-sm font-medium">
-                      Made with love for 30 years 🦩
+                      <a 
+                        href="https://gmgwebdesign.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="hover:text-flamingo-pink transition-colors"
+                      >
+                        Florist Website made with 💚 by Gator Media Group
+                      </a>
                     </p>
                   </div>
                 </div>
