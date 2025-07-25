@@ -17,15 +17,15 @@ export const Navigation = () => {
   return (
     <nav className="bg-cream/95 backdrop-blur-sm border-b border-dusty-rose/20 sticky top-0 z-50">
       <div className="max-w-container mx-auto px-4 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <Image
               src="/logo1.jpeg"
               alt="Flamingo Florist Logo"
-              width={48}
-              height={48}
-              className="w-12 h-12 rounded-lg object-cover"
+              width={96}
+              height={96}
+              className="w-16 h-16 md:w-20 md:h-20 rounded-lg object-contain"
             />
             <div>
               <span className="font-display text-2xl font-bold text-deep-navy">Flamingo Florist</span>
