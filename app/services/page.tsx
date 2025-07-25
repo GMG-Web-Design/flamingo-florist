@@ -241,7 +241,7 @@ export default function ServicesPage() {
                       <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
                         &quot;We don&apos;t create cookie-cutter arrangements. We create works of art.&quot;
                       </h3>
-                      <p className="text-white/90 mb-6">
+                      <p className="text-white/90 mb-6 ">
                         Everybody has a vision and we help guide to achieving whatever they need. 
                         We guide and give ideas but never take away from what they want.
                       </p>
