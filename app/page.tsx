@@ -105,7 +105,7 @@ export default function HomePage() {
               <div className="animate-slide-up" style={{ animationDelay: '0.3s' }}>
                 <div className="relative h-96 md:h-full min-h-[400px] rounded-3xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/images/gallery/additional-floral-arrangement-1.jpg"
+                    src="/img1.jpeg"
                     alt="Beautiful floral arrangement - real client work by Flamingo Florist"
                     fill
                     className="object-cover"

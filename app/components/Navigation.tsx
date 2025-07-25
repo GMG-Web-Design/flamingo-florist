@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Bars3Icon, XMarkIcon, PhoneIcon, SparklesIcon } from '@heroicons/react/24/outline'
 import { Button } from './Button'
 
@@ -19,7 +20,13 @@ export const Navigation = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <SparklesIcon className="w-8 h-8 text-flamingo-pink" />
+            <Image
+              src="/logo1.jpeg"
+              alt="Flamingo Florist Logo"
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-lg object-cover"
+            />
             <div>
               <span className="font-display text-2xl font-bold text-deep-navy">Flamingo Florist</span>
               <p className="text-sm text-warm-gray font-medium">30 Years of Making Moments Special</p>

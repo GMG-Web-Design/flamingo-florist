@@ -236,17 +236,32 @@ export default function ServicesPage() {
                 </div>
 
                 <div className="bg-gradient-flamingo rounded-3xl p-8 text-center">
-                  <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
-                    &quot;We don&apos;t create cookie-cutter arrangements. We create works of art.&quot;
-                  </h3>
-                  <p className="text-white/90 mb-6">
-                    Everybody has a vision and we help guide to achieving whatever they need. 
-                    We guide and give ideas but never take away from what they want.
-                  </p>
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-flamingo-pink">
-                    <PhoneIcon className="w-5 h-5 mr-2" />
-                    Start Your Vision
-                  </Button>
+                  <div className="flex flex-col lg:flex-row items-center gap-8">
+                    <div className="flex-1">
+                      <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
+                        &quot;We don&apos;t create cookie-cutter arrangements. We create works of art.&quot;
+                      </h3>
+                      <p className="text-white/90 mb-6">
+                        Everybody has a vision and we help guide to achieving whatever they need. 
+                        We guide and give ideas but never take away from what they want.
+                      </p>
+                      <Button variant="outline" className="border-white text-white hover:bg-white hover:text-flamingo-pink">
+                        <PhoneIcon className="w-5 h-5 mr-2" />
+                        Start Your Vision
+                      </Button>
+                    </div>
+                    <div className="flex-1">
+                      <div className="relative h-64 rounded-2xl overflow-hidden shadow-xl">
+                        <Image
+                          src="/img2.jpeg"
+                          alt="Beautiful floral arrangement showcasing our artistry"
+                          fill
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/20 to-transparent" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Col>

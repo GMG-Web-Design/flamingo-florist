@@ -155,20 +155,35 @@ export default function ContactPage() {
                 </div>
 
                 <div className="bg-gradient-flamingo rounded-2xl p-6 mt-8 text-center">
-                  <ChatBubbleLeftRightIcon className="w-8 h-8 text-white mx-auto mb-3" />
-                  <h4 className="font-display text-xl font-bold text-white mb-2">
-                    Prefer to Talk?
-                  </h4>
-                  <p className="text-white/90 mb-4">
-                    We&apos;d love to hear your story over the phone. Most questions are answered in just a few minutes!
-                  </p>
-                  <Button 
-                    variant="outline" 
-                    className="border-white text-white hover:bg-white hover:text-flamingo-pink"
-                  >
-                    <PhoneIcon className="w-5 h-5 mr-2" />
-                    Call Now
-                  </Button>
+                  <div className="flex flex-col lg:flex-row items-center gap-6">
+                    <div className="flex-1">
+                      <ChatBubbleLeftRightIcon className="w-8 h-8 text-white mx-auto mb-3" />
+                      <h4 className="font-display text-xl font-bold text-white mb-2">
+                        Prefer to Talk?
+                      </h4>
+                      <p className="text-white/90 mb-4">
+                        We&apos;d love to hear your story over the phone. Most questions are answered in just a few minutes!
+                      </p>
+                      <Button 
+                        variant="outline" 
+                        className="border-white text-white hover:bg-white hover:text-flamingo-pink"
+                      >
+                        <PhoneIcon className="w-5 h-5 mr-2" />
+                        Call Now
+                      </Button>
+                    </div>
+                    <div className="flex-1">
+                      <div className="relative h-48 rounded-xl overflow-hidden shadow-lg">
+                        <Image
+                          src="/img3.jpeg"
+                          alt="Beautiful floral arrangement - let's create something special together"
+                          fill
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-deep-navy/30 to-transparent" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Col>
