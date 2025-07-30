@@ -346,7 +346,7 @@ export default function ServicesPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg">
                     <PhoneIcon className="w-6 h-6 mr-2" />
-                    Call (555) 123-4567
+                    Call (865) 221-6010
                   </Button>
                   <Button variant="outline" size="lg">
                     <EnvelopeIcon className="w-6 h-6 mr-2" />

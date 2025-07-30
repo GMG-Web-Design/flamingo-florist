@@ -37,22 +37,22 @@ export const Footer = () => {
                   <div className="flex items-center gap-3">
                     <PhoneIcon className="w-5 h-5 text-coral-sunset flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-deep-navy">(555) 123-4567</p>
+                      <p className="font-medium text-deep-navy">(865) 221-6010</p>
                       <p className="text-warm-gray text-sm">Call and tell us your story</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <EnvelopeIcon className="w-5 h-5 text-coral-sunset flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-deep-navy">hello@flamingoflorist.com</p>
+                      <p className="font-medium text-deep-navy">flamingofloristtn@gmail.com</p>
                       <p className="text-warm-gray text-sm">We&apos;d love to hear from you</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <MapPinIcon className="w-5 h-5 text-coral-sunset flex-shrink-0" />
                     <div>
-                      <p className="font-medium text-deep-navy">123 Flower Street</p>
-                      <p className="text-warm-gray text-sm">Your Town, ST 12345</p>
+                      <p className="font-medium text-deep-navy">8209 Chapman Hwy.</p>
+                      <p className="text-warm-gray text-sm">Knoxville, TN 37920</p>
                     </div>
                   </div>
                 </div>

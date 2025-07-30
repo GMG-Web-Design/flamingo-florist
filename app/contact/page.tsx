@@ -96,7 +96,7 @@ export default function ContactPage() {
                       <h3 className="font-display text-xl font-semibold text-deep-navy mb-2">
                         Call Us
                       </h3>
-                      <p className="text-2xl font-bold text-flamingo-pink mb-1">(555) 123-4567</p>
+                      <p className="text-2xl font-bold text-flamingo-pink mb-1">(865) 221-6010</p>
                       <p className="text-warm-gray">
                         Call and tell us your story. We love hearing about your vision and helping make it come true.
                       </p>
@@ -111,7 +111,7 @@ export default function ContactPage() {
                       <h3 className="font-display text-xl font-semibold text-deep-navy mb-2">
                         Email Us
                       </h3>
-                      <p className="text-xl font-semibold text-coral-sunset mb-1">hello@flamingoflorist.com</p>
+                      <p className="text-xl font-semibold text-coral-sunset mb-1">flamingofloristtn@gmail.com</p>
                       <p className="text-warm-gray">
                         Send us details about your event, preferences, and any inspiration photos you have.
                       </p>
@@ -126,8 +126,8 @@ export default function ContactPage() {
                       <h3 className="font-display text-xl font-semibold text-deep-navy mb-2">
                         Visit Our Shop
                       </h3>
-                      <p className="text-xl font-semibold text-sage-green mb-1">123 Flower Street</p>
-                      <p className="text-warm-gray">Your Town, ST 12345</p>
+                      <p className="text-xl font-semibold text-sage-green mb-1">8209 Chapman Hwy.</p>
+                      <p className="text-warm-gray">Knoxville, TN 37920</p>
                       <p className="text-warm-gray mt-2">
                         Come see our work in person and let&apos;s create something beautiful together.
                       </p>
@@ -375,7 +375,7 @@ export default function ContactPage() {
                 </p>
                 <Button size="lg" className="bg-flamingo-pink hover:bg-coral-sunset">
                   <PhoneIcon className="w-6 h-6 mr-2" />
-                  Call (555) 123-4567 Now
+                                          Call (865) 221-6010 Now
                 </Button>
               </div>
             </Col>

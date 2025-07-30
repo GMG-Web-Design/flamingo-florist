@@ -83,9 +83,9 @@ flamingo-florist/
 
 ## Contact Information
 
-- **Phone**: (555) 123-4567
-- **Email**: hello@flamingoflorist.com
-- **Address**: 123 Flower Street, Your Town, ST 12345
+- **Phone**: (865) 221-6010
+- **Email**: flamingofloristtn@gmail.com
+- **Address**: 8209 Chapman Hwy. Knoxville, TN 37920
 
 ### Business Hours
 
