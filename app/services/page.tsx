@@ -222,7 +222,7 @@ export default function ServicesPage() {
                   Our Specialties
                 </h2>
                 <p className="text-xl text-cream/80 max-w-2xl mx-auto mb-12">
-                  We have local shops with local items and it&apos;s all custom made to fit the customer&apos;s needs. 
+                  We have local shops with local items and it's all custom made to fit the customer&apos;s needs. 
                   Every arrangement is unique, just like you.
                 </p>
                 
