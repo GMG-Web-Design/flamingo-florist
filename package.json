@@ -17,15 +17,19 @@
     "pre-commit": "pnpm lint && pnpm type-check && pnpm build"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
+    "clsx": "^2.0.0",
+    "framer-motion": "^10.16.4",
     "next": "^15.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@heroicons/react": "^2.0.18",
-    "framer-motion": "^10.16.4",
-    "clsx": "^2.0.0",
+    "resend": "^4.7.0",
     "tailwind-merge": "^2.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.2",
     "@types/node": "^20.8.10",
     "@types/react": "^18.2.33",
     "@types/react-dom": "^18.2.14",
@@ -35,16 +39,13 @@
     "eslint": "^8.52.0",
     "eslint-config-next": "^14.0.2",
     "eslint-plugin-tailwindcss": "^3.13.0",
-    "postcss": "^8.4.31",
-    "prettier": "^3.0.3",
-    "tailwindcss": "^3.4.0",
-    "typescript": "^5.2.2",
-    "sharp": "^0.32.6",
-    "@testing-library/react": "^14.1.2",
-    "@testing-library/jest-dom": "^6.1.4",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
-    "@playwright/test": "^1.40.0"
+    "postcss": "^8.4.31",
+    "prettier": "^3.0.3",
+    "sharp": "^0.32.6",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=18.0.0",

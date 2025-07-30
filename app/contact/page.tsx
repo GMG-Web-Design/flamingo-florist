@@ -15,6 +15,9 @@ export default function ContactPage() {
     message: ''
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
@@ -22,10 +25,42 @@ export default function ContactPage() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Form submission logic would go here
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          eventType: '',
+          date: '',
+          message: ''
+        })
+      } else {
+        const errorData = await response.json()
+        console.error('Form submission error:', errorData.error)
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Network error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -167,6 +202,7 @@ export default function ContactPage() {
                       <Button 
                         variant="outline" 
                         className="border-white text-white hover:bg-white hover:text-flamingo-pink"
+                        onClick={() => window.open('tel:+18652216010')}
                       >
                         <PhoneIcon className="w-5 h-5 mr-2" />
                         Call Now
@@ -313,16 +349,53 @@ export default function ContactPage() {
                     </ul>
                   </div>
 
+                  {/* Success/Error Messages */}
+                  {submitStatus === 'success' && (
+                    <div className="bg-sage-green/10 border border-sage-green/30 rounded-xl p-4 text-center">
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                        <SparklesIcon className="w-5 h-5 text-sage-green" />
+                        <p className="font-semibold text-sage-green">Message Sent Successfully!</p>
+                      </div>
+                      <p className="text-warm-gray text-sm">
+                        Thank you for sharing your story with us! We&apos;ll be in touch within 2-4 hours during business hours.
+                      </p>
+                    </div>
+                  )}
+
+                  {submitStatus === 'error' && (
+                    <div className="bg-coral-sunset/10 border border-coral-sunset/30 rounded-xl p-4 text-center">
+                      <p className="font-semibold text-coral-sunset mb-2">Oops! Something went wrong.</p>
+                      <p className="text-warm-gray text-sm">
+                        Please try again, or call us directly at (865) 221-6010 for immediate assistance.
+                      </p>
+                    </div>
+                  )}
+
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button type="submit" size="lg" className="flex-1">
-                      <EnvelopeIcon className="w-5 h-5 mr-2" />
-                      Send My Story
+                    <Button 
+                      type="submit" 
+                      size="lg" 
+                      className="flex-1"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-5 h-5 mr-2 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          Sending Your Story...
+                        </>
+                      ) : (
+                        <>
+                          <EnvelopeIcon className="w-5 h-5 mr-2" />
+                          Send My Story
+                        </>
+                      )}
                     </Button>
                     <Button 
                       type="button" 
                       variant="outline" 
                       size="lg"
                       className="flex-1"
+                      onClick={() => window.open('tel:+18652216010')}
                     >
                       <PhoneIcon className="w-5 h-5 mr-2" />
                       Call Instead
@@ -373,9 +446,13 @@ export default function ContactPage() {
                   We understand that some moments can&apos;t wait. For same-day arrangements, 
                   emergency deliveries, or last-minute requests, please call us directly.
                 </p>
-                <Button size="lg" className="bg-flamingo-pink hover:bg-coral-sunset">
+                <Button 
+                  size="lg" 
+                  className="bg-flamingo-pink hover:bg-coral-sunset"
+                  onClick={() => window.open('tel:+18652216010')}
+                >
                   <PhoneIcon className="w-6 h-6 mr-2" />
-                                          Call (865) 221-6010 Now
+                  Call (865) 221-6010 Now
                 </Button>
               </div>
             </Col>
