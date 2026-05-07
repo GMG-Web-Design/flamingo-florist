@@ -5,6 +5,7 @@ import './globals.css'
 import { Navigation } from './components/Navigation'
 import { Footer } from './components/Footer'
 import TrackingScript from './components/TrackingScript';
+import Script from 'next/script';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -74,6 +75,12 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+
+        {/* Master Site Script */}
+        <Script
+          src="https://engine.typesite.io/scripts/master-site-script.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
